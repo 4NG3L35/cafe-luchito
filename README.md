@@ -17,7 +17,7 @@ AppWeb de una cafetería de especialidad. Frontend en Angular, backend en Node.j
 
 ## Tablas
 
-inicio, servicios, especialidades, nosotros (incluye datos del fundador), fotos, precios (con categoría del menú), contactos.
+inicio, servicios, especialidades, nosotros (datos del local, ubicación del mapa y fundador), fotos, precios (con categoría del menú), contactos, chatbot y chatbot_sugerencias. Todo el contenido de la página (textos, imágenes, video, menú, mapa y saludo del chatbot) sale de estas tablas.
 
 ## API
 
@@ -30,6 +30,7 @@ inicio, servicios, especialidades, nosotros (incluye datos del fundador), fotos,
 | GET | /api/precios | Menú y precios |
 | POST | /api/contactos | Guarda el formulario de contacto |
 | GET | /api/contactos | Lista los mensajes recibidos |
+| GET | /api/chatbot | Nombre, saludo y preguntas sugeridas del chatbot |
 | POST | /api/chatbot | Chatbot con gemma3 |
 
 ## Cómo ejecutar

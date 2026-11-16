@@ -9,7 +9,7 @@ import { ApiService } from '../services/api.service';
       @if (data(); as d) {
         <video [src]="d.video_url" [muted]="true" autoplay loop playsinline preload="auto" (loadedmetadata)="reproducir($event)" (canplay)="reproducir($event)"></video>
         <div class="hero-overlay">
-          <span class="eyebrow">Café de especialidad · Cochabamba</span>
+          <span class="eyebrow">{{ d.etiqueta }}</span>
           <h1>{{ d.titulo }}</h1>
           <p>{{ d.subtitulo }}</p>
           <div class="hero-actions">

@@ -12,6 +12,7 @@ router.get('/nosotros', cafe.nosotros);
 router.get('/precios', cafe.precios);
 router.get('/contactos', cafe.listarContactos);
 router.post('/contactos', validarContacto, cafe.crearContacto);
+router.get('/chatbot', bot.config);
 router.post('/chatbot', validarChat, bot.chat);
 
 module.exports = router;

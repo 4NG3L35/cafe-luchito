@@ -1,10 +1,11 @@
 CREATE DATABASE IF NOT EXISTS cafeteria CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE cafeteria;
 
-DROP TABLE IF EXISTS contactos, precios, fotos, nosotros, especialidades, servicios, inicio;
+DROP TABLE IF EXISTS chatbot_sugerencias, chatbot, contactos, precios, fotos, nosotros, especialidades, servicios, inicio;
 
 CREATE TABLE inicio (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  etiqueta VARCHAR(120) NOT NULL,
   titulo VARCHAR(120) NOT NULL,
   subtitulo VARCHAR(255) NOT NULL,
   video_url VARCHAR(500) NOT NULL,
@@ -36,6 +37,8 @@ CREATE TABLE nosotros (
   telefono VARCHAR(30) NOT NULL,
   email VARCHAR(120) NOT NULL,
   horario VARCHAR(160) NOT NULL,
+  latitud DECIMAL(10,7) NOT NULL,
+  longitud DECIMAL(10,7) NOT NULL,
   fundador_nombre VARCHAR(120),
   fundador_cita TEXT,
   fundador_foto VARCHAR(500)
@@ -55,6 +58,17 @@ CREATE TABLE precios (
   detalle VARCHAR(255)
 );
 
+CREATE TABLE chatbot (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(60) NOT NULL,
+  saludo VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE chatbot_sugerencias (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pregunta VARCHAR(160) NOT NULL
+);
+
 CREATE TABLE contactos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(120) NOT NULL,
@@ -64,8 +78,8 @@ CREATE TABLE contactos (
   creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO inicio (titulo, subtitulo, video_url, poster_url) VALUES
-('Café Luchito', 'Café de especialidad tostado en casa con granos de los Yungas. Ven por tu taza favorita.', 'https://videos.pexels.com/video-files/7487668/7487668-hd_1920_1080_24fps.mp4', '/img/hero.jpg');
+INSERT INTO inicio (etiqueta, titulo, subtitulo, video_url, poster_url) VALUES
+('Café de especialidad · Cochabamba', 'Café Luchito', 'Café de especialidad tostado en casa con granos de los Yungas. Ven por tu taza favorita.', 'https://videos.pexels.com/video-files/7487668/7487668-hd_1920_1080_24fps.mp4', '/img/hero.jpg');
 
 INSERT INTO servicios (nombre, descripcion, icono, imagen) VALUES
 ('Cafetería en sala', 'Ambiente cálido con wifi, enchufes y música tranquila para trabajar o conversar.', 'taza', '/img/cafe.jpg'),
@@ -81,8 +95,8 @@ INSERT INTO especialidades (nombre, descripcion, especialista, imagen) VALUES
 ('Flat White', 'Más café y menos leche, sabor intenso y suave.', 'Barista: Diego Mamani', '/img/flat-white.jpg'),
 ('Cold Brew', 'Infusión en frío por 18 horas, refrescante y poco ácida.', 'Barista: Andrea Flores', '/img/cold-brew.jpg');
 
-INSERT INTO nosotros (nombre, historia, mision, direccion, telefono, email, horario, fundador_nombre, fundador_cita, fundador_foto) VALUES
-('Café Luchito', 'Empezamos en 2018 con una pequeña barra en la zona Norte de Cochabamba y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. América #845 esq. Pando, zona Norte, Cochabamba - Bolivia', '+591 4 4256677', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00', 'Luis Ángel "Luchito" Hurtado', 'Abrí Café Luchito para que cada taza cuente la historia de los productores de los Yungas. Aquí el café se toma con calma y se comparte con amigos.', '/img/fundador.jpg');
+INSERT INTO nosotros (nombre, historia, mision, direccion, telefono, email, horario, latitud, longitud, fundador_nombre, fundador_cita, fundador_foto) VALUES
+('Café Luchito', 'Empezamos en 2018 con una pequeña barra en la zona Norte de Cochabamba y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. América #845 esq. Pando, zona Norte, Cochabamba - Bolivia', '+591 4 4256677', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00', -17.3751317, -66.1585994, 'Luis Ángel "Luchito" Hurtado', 'Abrí Café Luchito para que cada taza cuente la historia de los productores de los Yungas. Aquí el café se toma con calma y se comparte con amigos.', '/img/fundador.jpg');
 
 INSERT INTO fotos (url, descripcion) VALUES
 ('/img/cafe.jpg', 'Nuestra sala'),
@@ -106,3 +120,11 @@ INSERT INTO precios (categoria, servicio, precio, detalle) VALUES
 ('Para acompañar', 'Sándwich de jamón y queso', 22, 'En pan de masa madre'),
 ('Para llevar a casa', 'Café en grano 250 g', 65, 'Tostado de la semana'),
 ('Para llevar a casa', 'Café molido 500 g', 120, 'Molienda a pedido');
+
+INSERT INTO chatbot (nombre, saludo) VALUES
+('Barista Bot', '¡Hola! Soy Barista Bot de Café Luchito. Pregúntame por el menú, precios u horarios.');
+
+INSERT INTO chatbot_sugerencias (pregunta) VALUES
+('¿Cuánto cuesta un cappuccino?'),
+('¿A qué hora abren?'),
+('¿Qué me recomiendas?');

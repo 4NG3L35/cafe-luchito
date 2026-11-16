@@ -11,7 +11,8 @@ async function contexto() {
 }
 
 async function responder(mensaje, historial) {
-  const system = `Eres "Barista Bot", el asistente virtual de la cafetería Café Luchito. Responde en español, breve y amable, solo sobre la cafetería, su menú, sus servicios y el café. Usa solo estos datos y no inventes precios:\n${await contexto()}\nSi preguntan algo ajeno a la cafetería, indica amablemente que solo puedes ayudar con temas de Café Luchito.`;
+  const bot = await Cafe.chatbot();
+  const system = `Eres "${bot.nombre}", el asistente virtual de la cafetería Café Luchito. Responde en español, breve y amable, solo sobre la cafetería, su menú, sus servicios y el café. Usa solo estos datos y no inventes precios:\n${await contexto()}\nSi preguntan algo ajeno a la cafetería, indica amablemente que solo puedes ayudar con temas de Café Luchito.`;
   const r = await fetch(`${process.env.OLLAMA_URL}/api/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

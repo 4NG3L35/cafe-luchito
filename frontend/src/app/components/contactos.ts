@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ApiService, Contacto } from '../services/api.service';
@@ -28,7 +29,7 @@ import { IconComponent } from '../icon';
         </form>
         @if (info(); as n) {
           <aside class="contact-card" reveal>
-            <iframe title="Mapa" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-66.1640%2C-17.3770%2C-66.1500%2C-17.3670&layer=mapnik&marker=-17.3720%2C-66.1570"></iframe>
+            <iframe title="Mapa" loading="lazy" [src]="mapa()"></iframe>
             <div class="contact-info">
               <p><app-icon name="ubicacion" [size]="20" /> {{ n.direccion }}</p>
               <p><app-icon name="telefono" [size]="20" /> {{ n.telefono }}</p>
@@ -43,7 +44,15 @@ import { IconComponent } from '../icon';
 })
 export class ContactosComponent {
   private api = inject(ApiService);
+  private sanitizer = inject(DomSanitizer);
   info = toSignal(this.api.nosotros());
+  mapa = computed(() => {
+    const n = this.info();
+    if (!n) return null;
+    const lat = +n.latitud, lng = +n.longitud, d = 0.006;
+    const url = `https://www.openstreetmap.org/export/embed.html?bbox=${lng - d}%2C${lat - d}%2C${lng + d}%2C${lat + d}&layer=mapnik&marker=${lat}%2C${lng}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  });
   form: Contacto = { nombre: '', email: '', telefono: '', mensaje: '' };
   enviando = signal(false);
   estado = signal('');
