@@ -35,7 +35,10 @@ CREATE TABLE nosotros (
   direccion VARCHAR(255) NOT NULL,
   telefono VARCHAR(30) NOT NULL,
   email VARCHAR(120) NOT NULL,
-  horario VARCHAR(160) NOT NULL
+  horario VARCHAR(160) NOT NULL,
+  fundador_nombre VARCHAR(120),
+  fundador_cita TEXT,
+  fundador_foto VARCHAR(500)
 );
 
 CREATE TABLE fotos (
@@ -46,6 +49,7 @@ CREATE TABLE fotos (
 
 CREATE TABLE precios (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  categoria VARCHAR(60) NOT NULL,
   servicio VARCHAR(120) NOT NULL,
   precio DECIMAL(10,2) NOT NULL,
   detalle VARCHAR(255)
@@ -77,8 +81,8 @@ INSERT INTO especialidades (nombre, descripcion, especialista, imagen) VALUES
 ('Flat White', 'Más café y menos leche, sabor intenso y suave.', 'Barista: Diego Mamani', '/img/flat-white.jpg'),
 ('Cold Brew', 'Infusión en frío por 18 horas, refrescante y poco ácida.', 'Barista: Andrea Flores', '/img/cold-brew.jpg');
 
-INSERT INTO nosotros (nombre, historia, mision, direccion, telefono, email, horario) VALUES
-('Café Luchito', 'Empezamos en 2018 con una pequeña barra en Sopocachi y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. 20 de Octubre #2215, Sopocachi, La Paz - Bolivia', '+591 2 2415566', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00');
+INSERT INTO nosotros (nombre, historia, mision, direccion, telefono, email, horario, fundador_nombre, fundador_cita, fundador_foto) VALUES
+('Café Luchito', 'Empezamos en 2018 con una pequeña barra en Sopocachi y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. 20 de Octubre #2215, Sopocachi, La Paz - Bolivia', '+591 2 2415566', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00', 'Luis Ángel "Luchito" Hurtado', 'Abrí Café Luchito para que cada taza cuente la historia de los productores de los Yungas. Aquí el café se toma con calma y se comparte con amigos.', '/img/fundador.jpg');
 
 INSERT INTO fotos (url, descripcion) VALUES
 ('/img/cafe.jpg', 'Nuestra sala'),
@@ -88,12 +92,17 @@ INSERT INTO fotos (url, descripcion) VALUES
 ('/img/window.jpg', 'Vista a la calle'),
 ('/img/latte.jpg', 'Latte art');
 
-INSERT INTO precios (servicio, precio, detalle) VALUES
-('Espresso', 12, 'Simple o doble'),
-('Americano', 14, '8 oz'),
-('Cappuccino', 18, '8 oz con latte art'),
-('Latte', 20, '12 oz, leche entera o de almendra'),
-('Flat White', 20, '8 oz'),
-('Cold Brew', 22, '12 oz con hielo'),
-('Iced Latte', 22, '12 oz'),
-('Café en grano 250 g', 65, 'Tostado de la semana');
+INSERT INTO precios (categoria, servicio, precio, detalle) VALUES
+('Bebidas calientes', 'Espresso', 12, 'Simple o doble'),
+('Bebidas calientes', 'Americano', 14, '8 oz'),
+('Bebidas calientes', 'Cappuccino', 18, '8 oz con latte art'),
+('Bebidas calientes', 'Latte', 20, '12 oz, leche entera o de almendra'),
+('Bebidas calientes', 'Flat White', 20, '8 oz'),
+('Bebidas frías', 'Cold Brew', 22, '12 oz con hielo'),
+('Bebidas frías', 'Iced Latte', 22, '12 oz'),
+('Bebidas frías', 'Frappé de moca', 25, '16 oz con crema'),
+('Para acompañar', 'Cheesecake de maracuyá', 24, 'Porción'),
+('Para acompañar', 'Croissant de mantequilla', 15, 'Recién horneado'),
+('Para acompañar', 'Sándwich de jamón y queso', 22, 'En pan de masa madre'),
+('Para llevar a casa', 'Café en grano 250 g', 65, 'Tostado de la semana'),
+('Para llevar a casa', 'Café molido 500 g', 120, 'Molienda a pedido');

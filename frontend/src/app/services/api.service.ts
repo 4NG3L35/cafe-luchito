@@ -5,8 +5,8 @@ export interface Inicio { titulo: string; subtitulo: string; video_url: string; 
 export interface Servicio { id: number; nombre: string; descripcion: string; icono: string; imagen: string; }
 export interface Especialidad { id: number; nombre: string; descripcion: string; especialista: string; imagen: string; }
 export interface Foto { id: number; url: string; descripcion: string; }
-export interface Nosotros { nombre: string; historia: string; mision: string; direccion: string; telefono: string; email: string; horario: string; fotos: Foto[]; }
-export interface Precio { id: number; servicio: string; precio: string; detalle: string; }
+export interface Nosotros { nombre: string; historia: string; mision: string; direccion: string; telefono: string; email: string; horario: string; fundador_nombre: string; fundador_cita: string; fundador_foto: string; fotos: Foto[]; }
+export interface Precio { id: number; categoria: string; servicio: string; precio: string; detalle: string; }
 export interface Contacto { nombre: string; email: string; telefono: string; mensaje: string; }
 export interface MensajeChat { role: 'user' | 'assistant'; content: string; }
 

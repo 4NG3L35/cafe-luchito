@@ -3,10 +3,10 @@ const Cafe = require('../models/cafeteria.model');
 async function contexto() {
   const [n, servicios, especialidades, precios] = await Promise.all([Cafe.nosotros(), Cafe.servicios(), Cafe.especialidades(), Cafe.precios()]);
   return [
-    `Cafetería: ${n.nombre}. Dirección: ${n.direccion}. Teléfono: ${n.telefono}. Email: ${n.email}. Horario: ${n.horario}.`,
+    `Cafetería: ${n.nombre}. Dirección: ${n.direccion}. Teléfono: ${n.telefono}. Email: ${n.email}. Horario: ${n.horario}. Fundador: ${n.fundador_nombre}.`,
     `Servicios: ${servicios.map(s => s.nombre).join(', ')}.`,
     `Bebidas especiales: ${especialidades.map(e => e.nombre).join(', ')}.`,
-    `Menú y precios: ${precios.map(p => `${p.servicio} Bs ${p.precio}`).join('; ')}.`
+    `Menú y precios: ${precios.map(p => `${p.servicio} (${p.categoria}) Bs ${p.precio}`).join('; ')}.`
   ].join('\n');
 }
 

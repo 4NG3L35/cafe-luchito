@@ -17,7 +17,7 @@ AppWeb de una cafetería de especialidad. Frontend en Angular, backend en Node.j
 
 ## Tablas
 
-inicio, servicios, especialidades, nosotros, fotos, precios, contactos.
+inicio, servicios, especialidades, nosotros (incluye datos del fundador), fotos, precios (con categoría del menú), contactos.
 
 ## API
 
