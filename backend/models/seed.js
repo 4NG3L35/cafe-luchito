@@ -1,0 +1,17 @@
+require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+const mysql = require('mysql2/promise');
+
+(async () => {
+  const conn = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    multipleStatements: true
+  });
+  await conn.query(fs.readFileSync(path.join(__dirname, '..', 'database.sql'), 'utf8'));
+  await conn.end();
+  console.log('Base de datos cafeteria creada');
+})().catch(e => { console.error(e.message); process.exit(1); });
