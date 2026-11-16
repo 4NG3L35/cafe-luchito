@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ApiService, Contacto } from '../services/api.service';
 import { RevealDirective } from '../reveal.directive';
+import { IconComponent } from '../icon';
 
 @Component({
   selector: 'app-contactos',
-  imports: [FormsModule, RevealDirective],
+  imports: [FormsModule, RevealDirective, IconComponent],
   template: `
     <section id="contactos" class="section">
       <div class="section-head" reveal>
@@ -27,12 +28,12 @@ import { RevealDirective } from '../reveal.directive';
         </form>
         @if (info(); as n) {
           <aside class="contact-card" reveal>
-            <iframe title="Mapa" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-68.1365%2C-16.5165%2C-68.1235%2C-16.5065&layer=mapnik&marker=-16.5115%2C-68.1300"></iframe>
+            <iframe title="Mapa" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-66.1640%2C-17.3770%2C-66.1500%2C-17.3670&layer=mapnik&marker=-17.3720%2C-66.1570"></iframe>
             <div class="contact-info">
-              <p><strong>📍</strong> {{ n.direccion }}</p>
-              <p><strong>📞</strong> {{ n.telefono }}</p>
-              <p><strong>✉️</strong> {{ n.email }}</p>
-              <p><strong>🕒</strong> {{ n.horario }}</p>
+              <p><app-icon name="ubicacion" [size]="20" /> {{ n.direccion }}</p>
+              <p><app-icon name="telefono" [size]="20" /> {{ n.telefono }}</p>
+              <p><app-icon name="correo" [size]="20" /> {{ n.email }}</p>
+              <p><app-icon name="reloj" [size]="20" /> {{ n.horario }}</p>
             </div>
           </aside>
         }

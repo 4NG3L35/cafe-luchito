@@ -8,13 +8,14 @@ import { NosotrosComponent } from './components/nosotros';
 import { PreciosComponent } from './components/precios';
 import { ContactosComponent } from './components/contactos';
 import { ChatbotComponent } from './components/chatbot';
+import { LogoComponent } from './icon';
 
 @Component({
   selector: 'app-root',
-  imports: [InicioComponent, ServiciosComponent, EspecialidadesComponent, NosotrosComponent, PreciosComponent, ContactosComponent, ChatbotComponent],
+  imports: [InicioComponent, ServiciosComponent, EspecialidadesComponent, NosotrosComponent, PreciosComponent, ContactosComponent, ChatbotComponent, LogoComponent],
   template: `
     <nav class="nav" [class.solid]="scrolled()">
-      <a href="#inicio" class="logo"><span class="logo-icon">☕</span> Café <em>Luchito</em></a>
+      <a href="#inicio" class="logo"><app-logo /> Café <em>Luchito</em></a>
       <button class="burger" [class.open]="menu()" (click)="menu.set(!menu())" aria-label="Menú"><span></span><span></span><span></span></button>
       <div class="links" [class.open]="menu()">
         @for (l of links; track l.id) {
@@ -29,7 +30,7 @@ import { ChatbotComponent } from './components/chatbot';
       @if (info(); as n) {
         <div class="footer-grid">
           <div>
-            <a href="#inicio" class="logo"><span class="logo-icon">☕</span> Café <em>Luchito</em></a>
+            <a href="#inicio" class="logo"><app-logo /> Café <em>Luchito</em></a>
             <p>{{ n.mision }}</p>
           </div>
           <div><h4>Visítanos</h4><p>{{ n.direccion }}</p></div>

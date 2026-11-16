@@ -1,16 +1,17 @@
 import { Component, ElementRef, effect, inject, signal, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ApiService, MensajeChat } from '../services/api.service';
+import { IconComponent } from '../icon';
 
 @Component({
   selector: 'app-chatbot',
-  imports: [FormsModule],
+  imports: [FormsModule, IconComponent],
   template: `
     <div class="chat" [class.open]="abierto()">
       <header>
-        <div class="chat-avatar">☕</div>
+        <div class="chat-avatar"><app-icon name="taza" [size]="22" /></div>
         <div><strong>Barista Bot</strong><small>{{ pensando() ? 'Escribiendo...' : 'En línea' }}</small></div>
-        <button (click)="abierto.set(false)" aria-label="Cerrar">×</button>
+        <button (click)="abierto.set(false)" aria-label="Cerrar"><app-icon name="cerrar" [size]="18" /></button>
       </header>
       <div class="msgs" #lista>
         <div class="msg assistant">¡Hola! Soy Barista Bot de Café Luchito. Pregúntame por el menú, precios u horarios.</div>
@@ -24,10 +25,10 @@ import { ApiService, MensajeChat } from '../services/api.service';
       </div>
       <form (ngSubmit)="enviar()">
         <input #entrada name="texto" [(ngModel)]="texto" placeholder="Escribe tu pregunta..." autocomplete="off">
-        <button [disabled]="pensando() || !texto.trim()" aria-label="Enviar">➤</button>
+        <button [disabled]="pensando() || !texto.trim()" aria-label="Enviar"><app-icon name="enviar" [size]="18" /></button>
       </form>
     </div>
-    <button class="chat-fab" [class.hidden]="abierto()" (click)="abrir()" aria-label="Abrir chat">☕<span>¿Te ayudo?</span></button>
+    <button class="chat-fab" [class.hidden]="abierto()" (click)="abrir()" aria-label="Abrir chat"><app-icon name="taza" [size]="26" /><span>¿Te ayudo?</span></button>
   `
 })
 export class ChatbotComponent {

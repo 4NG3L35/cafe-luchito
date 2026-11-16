@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ApiService } from '../services/api.service';
 import { RevealDirective } from '../reveal.directive';
+import { IconComponent } from '../icon';
 
 @Component({
   selector: 'app-servicios',
-  imports: [RevealDirective],
+  imports: [RevealDirective, IconComponent],
   template: `
     <section id="servicios" class="section">
       <div class="section-head" reveal>
@@ -16,7 +17,7 @@ import { RevealDirective } from '../reveal.directive';
       <div class="grid">
         @for (s of servicios(); track s.id; let i = $index) {
           <article class="card" reveal [style.transition-delay.ms]="i * 80">
-            <div class="card-img"><img [src]="s.imagen" [alt]="s.nombre" loading="lazy"><span class="card-icon">{{ s.icono }}</span></div>
+            <div class="card-img"><img [src]="s.imagen" [alt]="s.nombre" loading="lazy"><span class="card-icon"><app-icon [name]="s.icono" [size]="24" /></span></div>
             <div class="card-body">
               <h3>{{ s.nombre }}</h3>
               <p>{{ s.descripcion }}</p>

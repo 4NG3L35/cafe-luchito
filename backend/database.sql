@@ -15,7 +15,7 @@ CREATE TABLE servicios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   descripcion TEXT NOT NULL,
-  icono VARCHAR(10),
+  icono VARCHAR(30),
   imagen VARCHAR(500)
 );
 
@@ -68,12 +68,12 @@ INSERT INTO inicio (titulo, subtitulo, video_url, poster_url) VALUES
 ('Café Luchito', 'Café de especialidad tostado en casa con granos de los Yungas. Ven por tu taza favorita.', 'https://videos.pexels.com/video-files/7487668/7487668-hd_1920_1080_24fps.mp4', '/img/hero.jpg');
 
 INSERT INTO servicios (nombre, descripcion, icono, imagen) VALUES
-('Cafetería en sala', 'Ambiente cálido con wifi, enchufes y música tranquila para trabajar o conversar.', '☕', '/img/cafe.jpg'),
-('Para llevar', 'Pide en barra o por WhatsApp y recoge tu bebida sin hacer fila.', '🥤', '/img/iced-latte.jpg'),
-('Delivery', 'Llevamos tu café y postres a domicilio en la zona Sur y Sopocachi.', '🛵', '/img/window.jpg'),
-('Venta de grano', 'Café en grano o molido al momento según tu método de preparación.', '🫘', '/img/beans-bag.jpg'),
-('Catering y eventos', 'Barra de café para reuniones, cumpleaños y eventos de empresa.', '🎉', '/img/cheers.jpg'),
-('Talleres de barismo', 'Clases de latte art y métodos de filtrado los sábados.', '🎓', '/img/prep.jpg');
+('Cafetería en sala', 'Ambiente cálido con wifi, enchufes y música tranquila para trabajar o conversar.', 'taza', '/img/cafe.jpg'),
+('Para llevar', 'Pide en barra o por WhatsApp y recoge tu bebida sin hacer fila.', 'llevar', '/img/iced-latte.jpg'),
+('Delivery', 'Llevamos tu café y postres a domicilio en la zona Norte y el centro de Cochabamba.', 'delivery', '/img/window.jpg'),
+('Venta de grano', 'Café en grano o molido al momento según tu método de preparación.', 'grano', '/img/beans-bag.jpg'),
+('Catering y eventos', 'Barra de café para reuniones, cumpleaños y eventos de empresa.', 'evento', '/img/cheers.jpg'),
+('Talleres de barismo', 'Clases de latte art y métodos de filtrado los sábados.', 'taller', '/img/prep.jpg');
 
 INSERT INTO especialidades (nombre, descripcion, especialista, imagen) VALUES
 ('Espresso de la casa', 'Blend de los Yungas con notas a chocolate y caramelo.', 'Barista: Diego Mamani', '/img/espresso.jpg'),
@@ -82,7 +82,7 @@ INSERT INTO especialidades (nombre, descripcion, especialista, imagen) VALUES
 ('Cold Brew', 'Infusión en frío por 18 horas, refrescante y poco ácida.', 'Barista: Andrea Flores', '/img/cold-brew.jpg');
 
 INSERT INTO nosotros (nombre, historia, mision, direccion, telefono, email, horario, fundador_nombre, fundador_cita, fundador_foto) VALUES
-('Café Luchito', 'Empezamos en 2018 con una pequeña barra en Sopocachi y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. 20 de Octubre #2215, Sopocachi, La Paz - Bolivia', '+591 2 2415566', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00', 'Luis Ángel "Luchito" Hurtado', 'Abrí Café Luchito para que cada taza cuente la historia de los productores de los Yungas. Aquí el café se toma con calma y se comparte con amigos.', '/img/fundador.jpg');
+('Café Luchito', 'Empezamos en 2018 con una pequeña barra en la zona Norte de Cochabamba y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. América #845 esq. Pando, zona Norte, Cochabamba - Bolivia', '+591 4 4256677', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00', 'Luis Ángel "Luchito" Hurtado', 'Abrí Café Luchito para que cada taza cuente la historia de los productores de los Yungas. Aquí el café se toma con calma y se comparte con amigos.', '/img/fundador.jpg');
 
 INSERT INTO fotos (url, descripcion) VALUES
 ('/img/cafe.jpg', 'Nuestra sala'),
