@@ -7,7 +7,7 @@ import { ApiService } from '../services/api.service';
   template: `
     <section id="inicio" class="hero">
       @if (data(); as d) {
-        <video [src]="d.video_url" [poster]="d.poster_url" autoplay muted loop playsinline></video>
+        <video [src]="d.video_url" [muted]="true" autoplay loop playsinline preload="auto" (loadedmetadata)="reproducir($event)" (canplay)="reproducir($event)"></video>
         <div class="hero-overlay">
           <span class="eyebrow">Café de especialidad · La Paz</span>
           <h1>{{ d.titulo }}</h1>
@@ -26,4 +26,10 @@ import { ApiService } from '../services/api.service';
 })
 export class InicioComponent {
   data = toSignal(inject(ApiService).inicio());
+
+  reproducir(e: Event) {
+    const video = e.target as HTMLVideoElement;
+    video.muted = true;
+    if (video.paused) video.play().catch(() => {});
+  }
 }
