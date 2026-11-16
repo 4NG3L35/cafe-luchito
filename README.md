@@ -1,4 +1,4 @@
-# CoffeeHouse - Cafetería
+# Café Luchito
 
 AppWeb de una cafetería de especialidad. Frontend en Angular, backend en Node.js con Express, base de datos MySQL y chatbot con Ollama (gemma3).
 

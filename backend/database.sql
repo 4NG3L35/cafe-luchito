@@ -61,7 +61,7 @@ CREATE TABLE contactos (
 );
 
 INSERT INTO inicio (titulo, subtitulo, video_url, poster_url) VALUES
-('CoffeeHouse', 'Café de especialidad tostado en casa con granos de los Yungas. Ven por tu taza favorita.', 'https://videos.pexels.com/video-files/7487668/7487668-hd_1920_1080_24fps.mp4', '/img/hero.jpg');
+('Café Luchito', 'Café de especialidad tostado en casa con granos de los Yungas. Ven por tu taza favorita.', 'https://videos.pexels.com/video-files/7487668/7487668-hd_1920_1080_24fps.mp4', '/img/hero.jpg');
 
 INSERT INTO servicios (nombre, descripcion, icono, imagen) VALUES
 ('Cafetería en sala', 'Ambiente cálido con wifi, enchufes y música tranquila para trabajar o conversar.', '☕', '/img/cafe.jpg'),
@@ -78,7 +78,7 @@ INSERT INTO especialidades (nombre, descripcion, especialista, imagen) VALUES
 ('Cold Brew', 'Infusión en frío por 18 horas, refrescante y poco ácida.', 'Barista: Andrea Flores', '/img/cold-brew.jpg');
 
 INSERT INTO nosotros (nombre, historia, mision, direccion, telefono, email, horario) VALUES
-('CoffeeHouse', 'Empezamos en 2018 con una pequeña barra en Sopocachi y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. 20 de Octubre #2215, Sopocachi, La Paz - Bolivia', '+591 2 2415566', 'hola@coffeehouse.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00');
+('Café Luchito', 'Empezamos en 2018 con una pequeña barra en Sopocachi y una tostadora de 1 kg. Hoy tostamos nuestro propio café traído directamente de productores de Caranavi y servimos a más de 300 clientes por día.', 'Servir café de especialidad boliviano con calidad y apoyar a los productores locales.', 'Av. 20 de Octubre #2215, Sopocachi, La Paz - Bolivia', '+591 2 2415566', 'hola@cafeluchito.bo', 'Lunes a sábado 7:30 a 21:00. Domingos 9:00 a 14:00');
 
 INSERT INTO fotos (url, descripcion) VALUES
 ('/img/cafe.jpg', 'Nuestra sala'),
